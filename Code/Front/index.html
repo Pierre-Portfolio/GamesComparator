@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games Comparator</title>
+  <!-- Import Tailwind CSS -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-no-repeat bg-cover" style="background-image: url('./img/background.png');">
+
+  <!-- Use flexbox and items-center to center the header -->
+  <div class="flex items-center justify-center h-50">
+    <!-- Title -->
+    <img class="mt-12" src="./img/header.gif"/>
+  </div>
+
+
+  <!-- Use flexbox and items-center to center the search bar -->
+  <div class="flex items-center justify-center mt-20">
+    <!-- Use p-4 and rounded-full to add padding and round the corners of the input field -->
+    <input type="text" class="p-3 rounded-full text-3xl w-1/2 opacity-75" placeholder="Search the game...">
+  </div>
+
+  <!-- Display result of the research -->
+  <div class="flex justify-center space-x-4 mt-10">
+    
+    <!-- Steam -->
+    <div id="Steam" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
+      <img class="w-9/12 mx-auto mt-6" src="./img/Steam.png"/>
+      <p class="text-center text-4xl">Steam</p>
+    </div>
+    
+    <!-- Instant Gaming -->
+    <div id="IG" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
+      <img class="w-9/12 mx-auto mt-6" src="./img/IG.jpg"/>
+      <p class="text-center text-4xl">Instant Gaming</p>
+    </div>
+
+    <!-- G2A -->
+    <div id="G2A" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
+      <img class="w-9/12 mx-auto mt-6" src="./img/G2A.png"/>
+      <p class="text-center text-4xl">G2A</p>
+    </div>
+
+    <!-- Epics Games -->
+    <div id="Epics" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
+      <img class="w-9/12 mx-auto mt-6" src="./img/Epic.png"/>
+      <p class="text-center text-4xl">Epics Games</p>
+    </div>
+
+    <!-- Gog -->
+    <div id="GOG" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
+      <img class="w-9/12 mx-auto mt-6" src="./img/Gog.png"/>
+      <p class="text-center text-4xl">GOG</p>
+    </div>
+  </div>
+
+</body>
+</html>
