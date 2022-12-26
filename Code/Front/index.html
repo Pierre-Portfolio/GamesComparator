@@ -6,55 +6,74 @@
   <title>Games Comparator</title>
   <!-- Import Tailwind CSS -->
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    ::-webkit-scrollbar { width: 14px;} ::-webkit-scrollbar-thumb { border: 4px solid rgba(0, 0, 0, 0); background-clip: padding-box; border-radius: 9999px; background-color: rgba(255, 255, 255, 0.2); }::-webkit-scrollbar-thumb:hover {background-color: rgba(255, 255, 255, 0.6);}.overflow-y-overlay { overflow-y: overlay!important; }
+</style>
 </head>
-<body class="bg-no-repeat bg-cover" style="background-image: url('./img/background.png');">
+<body class="overflow-y-overlay text-gray-700 bg-no-repeat bg-cover" style="background-image: url('./img/background.png');">
 
   <!-- Use flexbox and items-center to center the header -->
-  <div class="flex items-center justify-center h-50">
+  <div class="flex items-center justify-center">
     <!-- Title -->
     <img class="mt-12" src="./img/header.gif"/>
   </div>
 
-
   <!-- Use flexbox and items-center to center the search bar -->
-  <div class="flex items-center justify-center mt-20">
+  <div class="flex items-center justify-center mt-10 mx-4">
     <!-- Use p-4 and rounded-full to add padding and round the corners of the input field -->
-    <input type="text" class="p-3 rounded-full text-3xl w-1/2 opacity-75" placeholder="Search the game...">
+    <input type="text" class="py-3 px-6 rounded-full text-3xl w-full lg:w-1/2 opacity-75" placeholder="Search the game...">
   </div>
 
   <!-- Display result of the research -->
-  <div class="flex justify-center space-x-4 mt-10">
-    
+  <div class="container mt-10 mx-auto p-4">
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-5">
+  
     <!-- Steam -->
-    <div id="Steam" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
-      <img class="w-9/12 mx-auto mt-6" src="./img/Steam.png"/>
-      <p class="text-center text-4xl">Steam</p>
+    <div class="col-span-1">
+      <div id="Steam" class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+        <img class="w-9/12" src="./img/Steam.png"/>
+        <p class="text-center text-4xl">Steam</p>
+      </div>
     </div>
     
     <!-- Instant Gaming -->
-    <div id="IG" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
-      <img class="w-9/12 mx-auto mt-6" src="./img/IG.jpg"/>
-      <p class="text-center text-4xl">Instant Gaming</p>
+    <div class="col-span-1">
+      <div id="IG" class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+        <img class="w-9/12" src="./img/IG.png"/>
+        <p class="text-center text-4xl">Instant Gaming</p>
+      </div>
     </div>
 
     <!-- G2A -->
-    <div id="G2A" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
-      <img class="w-9/12 mx-auto mt-6" src="./img/G2A.png"/>
-      <p class="text-center text-4xl">G2A</p>
+    <div class="col-span-1">
+      <div id="G2A" class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+        <img class="w-9/12" src="./img/G2A.png"/>
+        <p class="text-center text-4xl">G2A</p>
+      </div>
     </div>
 
     <!-- Epics Games -->
-    <div id="Epics" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
-      <img class="w-9/12 mx-auto mt-6" src="./img/Epic.png"/>
-      <p class="text-center text-4xl">Epics Games</p>
+    <div class="col-span-1">
+      <div id="Epics" class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+        <img class="w-9/12" src="./img/Epic.png"/>
+        <p class="text-center text-4xl">Epics Games</p>
+      </div>
     </div>
 
     <!-- Gog -->
-    <div id="GOG" class="block w-80 h-80 rounded-2xl bg-white opacity-50">
-      <img class="w-9/12 mx-auto mt-6" src="./img/Gog.png"/>
-      <p class="text-center text-4xl">GOG</p>
+    <div class="col-span-1">
+      <div id="GOG" class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+        <img class="w-9/12" src="./img/Gog.png"/>
+        <p class="text-center text-4xl">GOG</p>
+      </div>
     </div>
   </div>
+
+  </div>
+
+  <footer class="w-full p-2 text-center text-gray-400">
+    © Pierre#8057
+  </footer>
 
 </body>
 </html>
