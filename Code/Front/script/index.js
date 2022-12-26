@@ -13,6 +13,12 @@ document.addEventListener("keypress", function(e) {
         // Retire la classe "hidden" de l'élément
         element.classList.remove("hidden");
       }
+
+      // Vérifie si c'est actuellement l'image
+      if (element.classList.contains("w-9/12")) {
+        // Retire la classe "hidden" de l'élément
+        element.classList.add("hidden");
+      }
     });
   }
 });
