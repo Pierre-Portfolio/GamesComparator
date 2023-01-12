@@ -54,7 +54,7 @@ ROOT_URLCONF = 'siteweb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["siteweb/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
