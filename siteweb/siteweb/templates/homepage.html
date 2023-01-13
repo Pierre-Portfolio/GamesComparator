@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Games Comparator</title>
-  <link rel="icon" type="image/x-icon" href="./img/manette.ico">
+  <link rel="icon" type="image/x-icon" href="{% static 'img/manette.ico' %}">
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link href="./css/index.css" rel="stylesheet">
+  <link href="{% static 'css/index.css' %}" rel="stylesheet">
   <script src="https://kit.fontawesome.com/9821338389.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./script/index.js"></script>
+  <script type="text/javascript" src="{% static 'script/index.js' %}"></script>
 </head>
-<body class="overflow-y-overlay text-gray-700 bg-no-repeat bg-cover" style="background-image: url('./img/background.png');">
+<body class="overflow-y-overlay text-gray-700 bg-no-repeat bg-cover" style="background-image: url({% static 'img/background.png' %});">
 
   <!-- Use flexbox and items-center to center the header -->
   <div class="flex items-center justify-center">
     <!-- Title -->
-    <img class="mt-12" src="./img/GamesComparator.gif"/>
+    <img class="mt-12" src="{% static 'img/GamesComparator.gif' %}">
   </div>
 
   <!-- Use flexbox and items-center to center the search bar -->
@@ -31,7 +32,7 @@
     <!-- Steam -->
     <div class="col-span-1">
       <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="./img/Steam.png"/>
+        <img class="w-9/12" src="{% static 'img/Steam.png' %}"/>
         <p class="text-center text-4xl">Steam</p>
         <div id="Steam" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
           <img src="https://cdn.akamai.steamstatic.com/steam/apps/1506830/capsule_231x87.jpg?t=1653581021"></img>
@@ -46,7 +47,7 @@
     <!-- Instant Gaming -->
     <div class="col-span-1">
       <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="./img/IG.png"/>
+        <img class="w-9/12" src="{% static 'img/IG.png' %}"/>
         <p class="text-center text-4xl">Instant Gaming</p>
         <div id="IG" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
           <img src="https://cdn.akamai.steamstatic.com/steam/apps/1506830/capsule_231x87.jpg?t=1653581021"></img>
@@ -61,7 +62,7 @@
     <!-- G2A -->
     <div class="col-span-1">
       <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="./img/G2A.png"/>
+        <img class="w-9/12" src="{% static 'img/G2A.png' %}"/>
         <p class="text-center text-4xl">G2A</p>
         <div id="G2A" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
           <img src="https://cdn.akamai.steamstatic.com/steam/apps/1506830/capsule_231x87.jpg?t=1653581021"></img>
@@ -76,7 +77,7 @@
     <!-- Epics Games -->
     <div class="col-span-1">
       <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="./img/Epic.png"/>
+        <img class="w-9/12" src="{% static 'img/Epic.png' %}"/>
         <p class="text-center text-4xl">Epics Games</p>
         <div id="Epics" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
           <img src="https://cdn.akamai.steamstatic.com/steam/apps/1506830/capsule_231x87.jpg?t=1653581021"></img>
@@ -91,7 +92,7 @@
     <!-- Gog -->
     <div class="col-span-1">
       <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="./img/Gog.png"/>
+        <img class="w-9/12" src="{% static 'img/Gog.png' %}"/>
         <p class="text-center text-4xl">GOG</p>
         <div id="GOG" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
           <img src="https://cdn.akamai.steamstatic.com/steam/apps/1506830/capsule_231x87.jpg?t=1653581021"></img>
