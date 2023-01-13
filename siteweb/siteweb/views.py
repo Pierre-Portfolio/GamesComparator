@@ -28,7 +28,7 @@ def homepage_render(request):
 def ReturnElem(title =  None, picture_url = None, price = None, opinion = None, link = None ):
     # Create a dictionary with the information
     game_info = {
-        'title': title,
+        'title': title[:16],
         'opinion' : opinion,
         'price': price,
         'link' : link,
@@ -56,8 +56,8 @@ def ScrappingSteam(userSearch):
     try:
         title = result.find('span', class_='title').text
         picture_url = result.img['src']
-        price = result.find('div', class_='search_price').text.replace(' ','')
-        opinion = opinion_element["data-tooltip-html"]
+        price = result.find('div', class_='search_price').text.replace(' ','').replace('\r\n','')
+        opinion = opinion_element["data-tooltip-html"].split("<br>")[0]
     except AttributeError:
         title=" - ";
         picture_url=" - ";

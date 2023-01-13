@@ -13,7 +13,7 @@ document.addEventListener("keypress", async function(e) {
     const boxJeux = document.querySelectorAll(".col-span-1")
     for (let i = 0; i < boxJeux.length ; i++) {
       // Modification de l'image
-      boxJeux[i].querySelector("img").src = data[i]['picture_url'] != " - " ? data[i]['picture_url'] : picture_url_error
+      boxJeux[i].querySelectorAll("img")[1].src = data[i]['picture_url'] != " - " ? data[i]['picture_url'] : picture_url_error
 
       // modification des spans
       const listSpan = boxJeux[i].querySelectorAll("span")
