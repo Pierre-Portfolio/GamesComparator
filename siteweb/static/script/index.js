@@ -1,7 +1,13 @@
+let loading = false;
+
 // On ajoute un listener pour savoir quand l'utilisateur appuie sur la touche entrer
-document.addEventListener("keypress", function(e) {
-  if (e.key === "Enter") {
-    console.log("New item created!");
+document.addEventListener("keypress", async function(e) {
+  if (e.key === "Enter" && loading != true) {
+    loading = true;
+    const valueSearch = document.getElementById('searchbar').value;
+    const response = await fetch('http://127.0.0.1:8000/api/?q=' + valueSearch);
+    const data = await response.json();
+    console.log(data);
 
     // Récupère tous les éléments de la page
     var elements = document.querySelectorAll("*");
@@ -20,5 +26,6 @@ document.addEventListener("keypress", function(e) {
         element.classList.add("hidden");
       }
     });
+    loading = false;
   }
 });

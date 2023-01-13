@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 
 # Import packages for Beautiful Soup
 import urllib
@@ -13,24 +14,25 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 # Global var
-Steam = "https://store.steampowered.com/search/?term="
-IG = "https://www.instant-gaming.com/fr/rechercher/?gametype=games&query="
-G2A = "https://www.g2a.com/fr/category/gaming-c1?f[product-kind][0]=10&query="
-EpicGames = "https://store.epicgames.com/en-US/browse?q="
-GOG = "https://www.gog.com/fr/games?query="
+Steam = str("https://store.steampowered.com/search/?term=")
+IG = str("https://www.instant-gaming.com/fr/rechercher/?gametype=games&query=")
+G2A = str("https://www.g2a.com/fr/category/gaming-c1?f[product-kind][0]=10&query=")
+EpicGames = str("https://store.epicgames.com/en-US/browse?q=")
+GOG = str("https://www.gog.com/fr/games?query=")
 
 def homepage_render(request):
     page = render(request, "homepage.html")
     return page
 
 #Function which return a Json object
-def ReturnJsonElem(title =  None, picture_url = None, price = None, opinion = None ):
+def ReturnJsonElem(title =  None, picture_url = None, price = None, opinion = None, link = None ):
     # Create a dictionary with the information
     game_info = {
         'title': title,
         'picture_url': picture_url,
         'price': price,
-        'opinion' : opinion
+        'opinion' : opinion,
+        'link' : link
     }
 
     # Convert the dictionary to a JSON object
@@ -65,7 +67,7 @@ def ScrappingSteam(userSearch):
         price='0';
         opinion='0';
     # Return the informations
-    return ReturnJsonElem(title, picture_url, price, opinion)
+    return ReturnJsonElem(title, picture_url, price, opinion, url)
 
 #Epicgames
 def ScrappingEpics(userSearch):
@@ -90,7 +92,7 @@ def ScrappingEpics(userSearch):
     # driver.close()
     
     # Return the informations
-    return ReturnJsonElem(title, picture_url, price, opinion)
+    return ReturnJsonElem(title, picture_url, price, opinion, EP_url)
 
 # GOG
 def ScrappingGOG(userSearch):
@@ -109,23 +111,27 @@ def ScrappingGOG(userSearch):
         opinion='0';
         
     # Return the informations
-    return ReturnJsonElem(title, picture_url, price, opinion)
+    return ReturnJsonElem(title, picture_url, price, opinion, GOG_url)
 
-def APIgames(userSearch):
+def APIgames(request):
+    userSearch = request.GET['q']
+    #return userSearch
+    
     table=[]
     # Steam
     table.append(ScrappingSteam(userSearch))
 
     #IG
     #table.append(ScrappingIG(userSearch))
+    table.append(ReturnJsonElem(0,0,0,0,0))
 
     # G2A
     #table.append(ScrappingG2A(userSearch))
+    table.append(ReturnJsonElem(0,0,0,0,0))
 
     # Epic Game
     table.append(ScrappingEpics(userSearch))
 
     #GOG
     table.append(ScrappingGOG(userSearch))
-    
-    return table
+    return JsonResponse(table, safe=False)
