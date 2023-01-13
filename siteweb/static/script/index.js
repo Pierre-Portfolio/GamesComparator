@@ -1,3 +1,4 @@
+const picture_url_error = "http://127.0.0.1:8000/static/img/error404.png"
 let loading = false;
 
 // On ajoute un listener pour savoir quand l'utilisateur appuie sur la touche entrer
@@ -9,8 +10,21 @@ document.addEventListener("keypress", async function(e) {
     const data = await response.json();
     console.log(data);
 
+    const boxJeux = document.querySelectorAll(".col-span-1")
+    for (let i = 0; i < boxJeux.length ; i++) {
+      // Modification de l'image
+      boxJeux[i].querySelector("img").src = data[i]['picture_url'] != " - " ? data[i]['picture_url'] : picture_url_error
+
+      // modification des spans
+      const listSpan = boxJeux[i].querySelectorAll("span")
+      listSpan[0].innerText = data[i]['title']
+      listSpan[1].innerText = data[i]['opinion']
+      listSpan[2].innerText = data[i]['price']
+      listSpan[3].innerHTML = data[i]['link'] != " - " ? '<a href="' + data[i]['link'] + '">Cliquez ici</a>' : data[i]['link']
+    }
+
     // Récupère tous les éléments de la page
-    var elements = document.querySelectorAll("*");
+    const elements = document.querySelectorAll("*");
 
     // Parcoure chaque élément
     elements.forEach(function(element) {
@@ -26,6 +40,7 @@ document.addEventListener("keypress", async function(e) {
         element.classList.add("hidden");
       }
     });
+
     loading = false;
   }
 });

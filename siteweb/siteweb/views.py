@@ -25,20 +25,17 @@ def homepage_render(request):
     return page
 
 #Function which return a Json object
-def ReturnJsonElem(title =  None, picture_url = None, price = None, opinion = None, link = None ):
+def ReturnElem(title =  None, picture_url = None, price = None, opinion = None, link = None ):
     # Create a dictionary with the information
     game_info = {
         'title': title,
-        'picture_url': picture_url,
-        'price': price,
         'opinion' : opinion,
-        'link' : link
+        'price': price,
+        'link' : link,
+        'picture_url': picture_url
     }
 
-    # Convert the dictionary to a JSON object
-    game_info_json = json.dumps(game_info)
-
-    return game_info_json
+    return game_info
 
 # Steam
 def ScrappingSteam(userSearch):
@@ -62,12 +59,13 @@ def ScrappingSteam(userSearch):
         price = result.find('div', class_='search_price').text.replace(' ','')
         opinion = opinion_element["data-tooltip-html"]
     except AttributeError:
-        title='0';
-        picture_url='0';
-        price='0';
-        opinion='0';
+        title=" - ";
+        picture_url=" - ";
+        price=" - ";
+        opinion=" - ";
+        url = " - ";
     # Return the informations
-    return ReturnJsonElem(title, picture_url, price, opinion, url)
+    return ReturnElem(title, picture_url, price, opinion, url)
 
 #Epicgames
 def ScrappingEpics(userSearch):
@@ -82,17 +80,18 @@ def ScrappingEpics(userSearch):
         title = driver.find_elements(By.CLASS_NAME, "css-rgqwpc")[0].get_attribute('innerHTML');
         picture_url = driver.find_elements(By.CLASS_NAME, "css-174g26k")[0].get_attribute('src');
         price = driver.find_elements(By.CLASS_NAME, "css-119zqif")[5].get_attribute('innerHTML');
-        opinion='0';
+        opinion=" - ";
     except IndexError:
-        title='0';
-        picture_url='0';
-        price='0';
-        opinion='0';
+        title=" - ";
+        picture_url=" - ";
+        price=" - ";
+        opinion=" - ";
+        EP_url = " - ";
     # Closes the current window
     # driver.close()
     
     # Return the informations
-    return ReturnJsonElem(title, picture_url, price, opinion, EP_url)
+    return ReturnElem(title, picture_url, price, opinion, EP_url)
 
 # GOG
 def ScrappingGOG(userSearch):
@@ -105,13 +104,14 @@ def ScrappingGOG(userSearch):
         price = htmlpage.find_all(class_ = "final-value")[0].text
         opinion='0'
     except IndexError:
-        title='0';
-        picture_url='0';
-        price='0';
-        opinion='0';
+        title=" - ";
+        picture_url=" - ";
+        price=" - ";
+        opinion=" - ";
+        GOG_url= " - "
         
     # Return the informations
-    return ReturnJsonElem(title, picture_url, price, opinion, GOG_url)
+    return ReturnElem(title, picture_url, price, opinion, GOG_url)
 
 def APIgames(request):
     userSearch = request.GET['q']
@@ -123,11 +123,11 @@ def APIgames(request):
 
     #IG
     #table.append(ScrappingIG(userSearch))
-    table.append(ReturnJsonElem(0,0,0,0,0))
+    table.append(ReturnElem(" - "," - "," - "," - "," - "))
 
     # G2A
     #table.append(ScrappingG2A(userSearch))
-    table.append(ReturnJsonElem(0,0,0,0,0))
+    table.append(ReturnElem(" - "," - "," - "," - "," - "))
 
     # Epic Game
     table.append(ScrappingEpics(userSearch))
