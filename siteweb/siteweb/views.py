@@ -59,13 +59,43 @@ def ScrappingSteam(userSearch):
         price = result.find('div', class_='search_price').text.replace(' ','').replace('\r\n','')
         opinion = opinion_element["data-tooltip-html"].split("<br>")[0]
     except AttributeError:
-        title=" - ";
-        picture_url=" - ";
-        price=" - ";
-        opinion=" - ";
-        url = " - ";
+        title = " - "
+        picture_url = " - "
+        price = " - "
+        opinion = " - "
+        url = " - "
     # Return the informations
     return ReturnElem(title, picture_url, price, opinion, url)
+
+# Instant Gaming
+def ScrappingIG(userSearch):
+    # scraping
+    driver = webdriver.Chrome()
+    IG_url = str(IG + userSearch.replace(" ","%20"))
+    driver.get(IG_url)
+    # we select the correct data 
+    try:
+        title = driver.find_elements(By.CLASS_NAME, "title")[4].get_attribute('innerHTML');
+        picture_url = driver.find_elements(By.CLASS_NAME, "picture")[0].get_attribute('src');
+        price = driver.find_elements(By.CLASS_NAME, "price")[1].get_attribute('innerHTML');
+        opinion = " - "
+    except IndexError:
+        title = " - "
+        picture_url = " - "
+        price = " - "
+        opinion = " - "
+        url = " - "
+    except ConnectionError:
+        title = " - "
+        picture_url= " - "
+        price = " - "
+        opinion = " - "
+        url = " - "
+    # Closes the current window
+    driver.close()
+    
+    # Return the informations
+    return ReturnElem(title, picture_url, price, opinion, )
 
 #Epicgames
 def ScrappingEpics(userSearch):
@@ -122,8 +152,8 @@ def APIgames(request):
     table.append(ScrappingSteam(userSearch))
 
     #IG
-    #table.append(ScrappingIG(userSearch))
-    table.append(ReturnElem(" - "," - "," - "," - "," - "))
+    table.append(ScrappingIG(userSearch))
+    #table.append(ReturnElem(" - "," - "," - "," - "," - "))
 
     # G2A
     #table.append(ScrappingG2A(userSearch))
