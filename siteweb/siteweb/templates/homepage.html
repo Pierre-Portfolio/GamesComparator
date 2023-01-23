@@ -11,7 +11,7 @@
   <script src="https://kit.fontawesome.com/9821338389.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="{% static 'script/index.js' %}"></script>
 </head>
-<body class="overflow-y-overlay text-gray-700 bg-no-repeat bg-cover" style="background-image: url({% static 'img/background.png' %});">
+<body class="overflow-y-overlay text-gray-700 bg-no-repeat bg-cover" style="background-image: url({% static 'img/forest.png' %});">
 
   <!-- Use flexbox and items-center to center the header -->
   <div class="flex items-center justify-center">
@@ -27,87 +27,96 @@
 
   <!-- Display result of the research -->
   <div class="container mt-10 mx-auto p-4">
-  <div class="grid grid-cols-1 gap-4 lg:grid-cols-5">
-  
-    <!-- Steam -->
-    <div class="col-span-1">
-      <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="{% static 'img/Steam.png' %}"/>
-        <p class="text-center text-4xl">Steam</p>
-        <div id="Steam" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
-          <img src="{% static 'img/error404.png' %}" class="max-h-32">
-          <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
-          <a><i class="fa-solid fa-thumbs-up"></i> Opinion : <span></span></a>
-          <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
-          <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
-        </div>
-      </div>
-    </div>
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-5">
     
-    <!-- Instant Gaming -->
-    <div class="col-span-1">
-      <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="{% static 'img/IG.png' %}"/>
-        <p class="text-center text-4xl">Instant Gaming</p>
-        <div id="IG" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
-          <img src="{% static 'img/error404.png' %}" class="max-h-32">
-          <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
-          <a><i class="fa-solid fa-thumbs-up"></i> Opinion : <span></span></a>
-          <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
-          <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+      <!-- Steam -->
+      <div class="col-span-1">
+        <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+          <img class="w-9/12" src="{% static 'img/Steam.png' %}"/>
+          <p class="text-center text-4xl">Steam</p>
+          <div id="Steam" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
+            <img src="{% static 'img/error404.png' %}" class="max-h-32">
+            <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
+            <a><i class="fa-solid fa-thumbs-up"></i> Opinion : <span></span></a>
+            <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
+            <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- G2A -->
-    <div class="col-span-1">
-      <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="{% static 'img/G2A.png' %}"/>
-        <p class="text-center text-4xl">G2A</p>
-        <div id="G2A" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
-          <img src="{% static 'img/error404.png' %}" class="max-h-32">
-          <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
-          <a><i class="fa-solid fa-thumbs-up"></i> Opinion : <span></span></a>
-          <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
-          <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+      
+      <!-- Instant Gaming -->
+      <div class="col-span-1">
+        <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+          <img class="w-9/12" src="{% static 'img/IG.png' %}"/>
+          <p class="text-center text-4xl">Instant Gaming</p>
+          <div id="IG" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
+            <img src="{% static 'img/error404.png' %}" class="max-h-32">
+            <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
+            <a><i class="fa-solid fa-thumbs-up"></i> Opinion : <span></span></a>
+            <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
+            <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Epics Games -->
-    <div class="col-span-1">
-      <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="{% static 'img/Epic.png' %}"/>
-        <p class="text-center text-4xl">Epic Games</p>
-        <div id="Epics" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
-          <img src="{% static 'img/error404.png' %}" class="max-h-32">
-          <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
-          <a><i class="fa-solid fa-thumbs-up"></i> Opinion :<span></span> </a>
-          <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
-          <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+      <!-- G2A -->
+      <div class="col-span-1">
+        <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+          <img class="w-9/12" src="{% static 'img/G2A.png' %}"/>
+          <p class="text-center text-4xl">G2A</p>
+          <div id="G2A" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
+            <img src="{% static 'img/error404.png' %}" class="max-h-32">
+            <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
+            <a><i class="fa-solid fa-thumbs-up"></i> Opinion : <span></span></a>
+            <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
+            <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Gog -->
-    <div class="col-span-1">
-      <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
-        <img class="w-9/12" src="{% static 'img/Gog.png' %}"/>
-        <p class="text-center text-4xl">GOG</p>
-        <div id="GOG" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
-          <img src="{% static 'img/error404.png' %}" class="max-h-32">
-          <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
-          <a><i class="fa-solid fa-thumbs-up"></i> Opinion : <span></span></a>
-          <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
-          <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+      <!-- Epics Games -->
+      <div class="col-span-1">
+        <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+          <img class="w-9/12" src="{% static 'img/Epic.png' %}"/>
+          <p class="text-center text-4xl">Epic Games</p>
+          <div id="Epics" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
+            <img src="{% static 'img/error404.png' %}" class="max-h-32">
+            <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
+            <a><i class="fa-solid fa-thumbs-up"></i> Opinion :<span></span> </a>
+            <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
+            <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gog -->
+      <div class="col-span-1">
+        <div class="flex items-center justify-around flex-col w-auto h-full rounded-2xl bg-white opacity-50 hover:opacity-80 transition-opacity p-4 cursor-pointer">
+          <img class="w-9/12" src="{% static 'img/Gog.png' %}"/>
+          <p class="text-center text-4xl">GOG</p>
+          <div id="GOG" class="mt-6 flex flex-col space-y-0.5 text-lg hidden">
+            <img src="{% static 'img/error404.png' %}" class="max-h-32">
+            <a><i class="fa-solid fa-tag"></i> Title : <span></span></a>
+            <a><i class="fa-solid fa-thumbs-up"></i> Opinion : <span></span></a>
+            <a><i class="fa-sharp fa-solid fa-money-bill"></i> Price : <span></span></a>
+            <a><i class="fa-solid fa-location-dot"></i> Link : <span></span></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <div id="loadingpage" class="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-70 hidden">
+    <div class="flex items-center justify-center w-full h-full">
+      <div class="flex items-center justify-center space-x-2 animate-pulse">
+        <div class="w-8 h-8 bg-blue-400 rounded-full"></div>
+        <div class="w-8 h-8 bg-green-400 rounded-full"></div>
+        <div class="w-8 h-8 bg-red-400 rounded-full"></div>
+      </div>
+    </div>
   </div>
 
-  <footer class="w-full p-2 text-center text-gray-400">
+  <footer class="w-full p-2 text-center text-white">
     © Pierre & Thibault
   </footer>
 </body>

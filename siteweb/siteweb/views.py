@@ -56,8 +56,13 @@ def ScrappingSteam(userSearch):
     try:
         title = result.find('span', class_='title').text
         picture_url = result.img['src']
-        price = result.find('div', class_='search_price').text.replace(' ','').replace('\r\n','')
         opinion = opinion_element["data-tooltip-html"].split("<br>")[0]
+
+        price = result.find('div', class_='search_price').text.replace(' ','').replace('\r\n','')
+        if(len(price.split("€")) != 1):
+            prices = price.split("€")
+            price = prices[1] + "€"
+        
     except AttributeError:
         title = " - "
         picture_url = " - "
@@ -72,6 +77,9 @@ def ScrappingIG(userSearch):
     # scraping
     driver = webdriver.Chrome()
     IG_url = str(IG + userSearch.replace(" ","%20"))
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    driver = webdriver.Chrome('chromedriver', chrome_options=options)
     driver.get(IG_url)
     # we select the correct data 
     try:
@@ -79,6 +87,7 @@ def ScrappingIG(userSearch):
         picture_url = driver.find_elements(By.CLASS_NAME, "picture")[0].get_attribute('src');
         price = driver.find_elements(By.CLASS_NAME, "price")[1].get_attribute('innerHTML');
         opinion = " - "
+        url = IG_url
     except IndexError:
         title = " - "
         picture_url = " - "
@@ -95,7 +104,40 @@ def ScrappingIG(userSearch):
     driver.close()
     
     # Return the informations
-    return ReturnElem(title, picture_url, price, opinion, )
+    return ReturnElem(title, picture_url, price, opinion, url)
+
+# G2A
+def ScrappingG2A(userSearch):
+    # scraping
+    driver = webdriver.Chrome()
+    G2A_url = G2A + userSearch.replace(" ","+")
+    driver.get(G2A_url)
+
+    # we select the correct data
+    try:
+        title = driver.find_elements(By.XPATH, "//h3")[6].text;
+    except IndexError:
+        title = " I "
+
+    try:
+        picture_url = driver.find_elements(By.XPATH, "//img")[1].get_attribute('src');
+    except IndexError:
+        picture_url = " I "
+
+    try:
+        price_before = driver.find_elements(By.XPATH, "//span")[212].text.split(" ");
+        price = price_before[1] + price_before[0]
+    except IndexError:
+        price = " I "
+    
+    opinion = " - "
+    url = G2A_url
+        
+    # Closes the current window
+    driver.close()
+    
+    # Return the informations
+    return ReturnElem(title, picture_url, price, opinion, url)
 
 #Epicgames
 def ScrappingEpics(userSearch):
@@ -103,7 +145,6 @@ def ScrappingEpics(userSearch):
     driver = webdriver.Chrome()
     EP_url = str(EpicGames + userSearch.replace(" ","%20")+'&sortBy=relevancy')
     driver.get(EP_url)
-    #xpath='/html/body/div[1]/div/div[4]/main/div[2]/div/div/div/div/section/div/section/div/section/section/ul/li/div/div/a/div/div/div[2]/div[3]/div/div/div/div/span'
 
     # we select the correct data 
     try:
@@ -117,8 +158,9 @@ def ScrappingEpics(userSearch):
         price=" - ";
         opinion=" - ";
         EP_url = " - ";
+
     # Closes the current window
-    # driver.close()
+    driver.close()
     
     # Return the informations
     return ReturnElem(title, picture_url, price, opinion, EP_url)
@@ -145,23 +187,14 @@ def ScrappingGOG(userSearch):
 
 def APIgames(request):
     userSearch = request.GET['q']
-    #return userSearch
     
     table=[]
-    # Steam
+
+    #Scrapping
     table.append(ScrappingSteam(userSearch))
-
-    #IG
     table.append(ScrappingIG(userSearch))
-    #table.append(ReturnElem(" - "," - "," - "," - "," - "))
-
-    # G2A
-    #table.append(ScrappingG2A(userSearch))
-    table.append(ReturnElem(" - "," - "," - "," - "," - "))
-
-    # Epic Game
+    table.append(ScrappingG2A(userSearch))
     table.append(ScrappingEpics(userSearch))
-
-    #GOG
     table.append(ScrappingGOG(userSearch))
+
     return JsonResponse(table, safe=False)
