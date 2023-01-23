@@ -9,12 +9,13 @@
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link href="{% static 'css/index.css' %}" rel="stylesheet">
   <script src="https://kit.fontawesome.com/9821338389.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="{% static 'script/index.js' %}"></script>
 </head>
-<body class="overflow-y-overlay text-gray-700 bg-no-repeat bg-cover" style="background-image: url({% static 'img/forest.png' %});">
+<body>
+  <video poster="{% static 'img/forest.png' %}" id="bgvid">
+    <source src="{% static 'video/forest.mp4' %}" type="video/mp4"> </video>
 
   <!-- Use flexbox and items-center to center the header -->
-  <div class="flex items-center justify-center">
+  <div id="logo" class="flex items-center justify-center">
     <!-- Title -->
     <img class="mt-12" src="{% static 'img/GamesComparator.gif' %}">
   </div>
@@ -119,5 +120,6 @@
   <footer class="w-full p-2 text-center text-white">
     © Pierre & Thibault
   </footer>
+  <script type="text/javascript" src="{% static 'script/index.js' %}"></script>
 </body>
 </html>

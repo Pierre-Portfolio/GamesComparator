@@ -1,3 +1,17 @@
+// Lancer le background que l'ont peut stopper en cliquant sur le logo
+(function() {
+  var vid = document.getElementById("bgvid");
+  var pauseButton = document.querySelector("#logo");
+
+  pauseButton.addEventListener("click", function() {
+    if (vid.paused) {
+      vid.play();
+    } else {
+      vid.pause();
+    }
+  })
+})();
+
 const picture_url_error = "http://127.0.0.1:8000/static/img/error404.png"
 let loading = false;
 
