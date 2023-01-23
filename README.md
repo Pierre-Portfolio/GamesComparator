@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./Assets/header.gif" alt="FPS" />
+  <img src="./Assets/header.gif" alt="Game Comparator" />
 </h1>
 
 ---
@@ -45,7 +45,7 @@ Puis on lance le serveur
 
 ## Démo
 
-
+<img src="./Assets/Demo.gif" alt="Redicube" />
 
 ## Auteur
 
