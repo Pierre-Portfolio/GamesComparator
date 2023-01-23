@@ -7,7 +7,7 @@ import bs4
 import requests
 from urllib import request
 from bs4 import BeautifulSoup
-import json
+import time
 
 # importing packages for selenium
 from selenium import webdriver
@@ -59,7 +59,7 @@ def ScrappingSteam(userSearch):
         opinion = opinion_element["data-tooltip-html"].split("<br>")[0]
 
         price = result.find('div', class_='search_price').text.replace(' ','').replace('\r\n','')
-        if(len(price.split("€")) != 1):
+        if(price.count("€") > 1):
             prices = price.split("€")
             price = prices[1] + "€"
         
@@ -117,18 +117,18 @@ def ScrappingG2A(userSearch):
     try:
         title = driver.find_elements(By.XPATH, "//h3")[6].text;
     except IndexError:
-        title = " I "
+        title = " - "
 
     try:
         picture_url = driver.find_elements(By.XPATH, "//img")[1].get_attribute('src');
     except IndexError:
-        picture_url = " I "
+        picture_url = " - "
 
     try:
         price_before = driver.find_elements(By.XPATH, "//span")[212].text.split(" ");
         price = price_before[1] + price_before[0]
     except IndexError:
-        price = " I "
+        price = " - "
     
     opinion = " - "
     url = G2A_url
@@ -151,6 +151,11 @@ def ScrappingEpics(userSearch):
         title = driver.find_elements(By.CLASS_NAME, "css-rgqwpc")[0].get_attribute('innerHTML');
         picture_url = driver.find_elements(By.CLASS_NAME, "css-174g26k")[0].get_attribute('src');
         price = driver.find_elements(By.CLASS_NAME, "css-119zqif")[5].get_attribute('innerHTML');
+        if(len(price.split("<span>")) != 1):
+            prices = price.split("<span>")
+            price = prices[1].split("</span>")[0]
+        prices = price.split("€")
+        price = prices[1] + "€"
         opinion=" - ";
     except IndexError:
         title=" - ";
