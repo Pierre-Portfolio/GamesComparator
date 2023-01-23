@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src=".siteweb/static/img/GamesComparator.gif" alt="FPS" />
+  <img src="./Assets/header.gif" alt="FPS" />
 </h1>
 
 ---
