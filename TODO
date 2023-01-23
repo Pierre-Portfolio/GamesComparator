@@ -1,8 +1,0 @@
-Pour installataion
-pip install bs4
-pip install selenium
-pip install requests
-
-
-Run le sercveur :
-python manage.py runserver
