@@ -34,6 +34,7 @@
 - TailWind
 
 ## Lancer le projet
+
 On commence par l'installatin du serveur django
 `python -m pip install Django`
 
@@ -45,7 +46,7 @@ Puis on lance le serveur
 
 ## Démo
 
-<img src="./Assets/Demo.gif" alt="Redicube" />
+<img src="./Assets/Demo.gif" alt="GamesComparator" />
 
 ## Auteur
 
